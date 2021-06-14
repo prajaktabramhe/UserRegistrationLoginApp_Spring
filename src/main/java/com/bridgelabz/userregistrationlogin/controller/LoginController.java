@@ -18,6 +18,7 @@ import com.bridgelabz.userregistrationlogin.dto.LoginDTO;
 import com.bridgelabz.userregistrationlogin.dto.RegisterDTO;
 import com.bridgelabz.userregistrationlogin.dto.ResponseDTO;
 import com.bridgelabz.userregistrationlogin.service.ILoginService;
+import com.bridgelabz.userregistrationlogin.util.Response;
 
 
 @RestController
@@ -29,22 +30,22 @@ public class LoginController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/login")
-	public ResponseEntity<ResponseDTO> login(@Valid @RequestBody LoginDTO login){
-		ResponseDTO responseDTO = new ResponseDTO("Login Successfully", loginService.loginData(login));
-		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+	public ResponseEntity<Response> login(@Valid @RequestBody LoginDTO login){
+		Response response = loginService.loginData(login);
+		return new ResponseEntity<>(response,HttpStatus.OK);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/register")
-	public ResponseEntity<ResponseDTO> registerUserData(@Valid @RequestBody RegisterDTO registerDTO){
-		ResponseDTO responseDTO = new ResponseDTO("User Registration Successfully", loginService.registerUserData(registerDTO));
-		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+	public ResponseEntity<Response> registerUserData(@Valid @RequestBody RegisterDTO registerDTO){
+		Response response= loginService.registerUserData(registerDTO);
+		return new ResponseEntity<>(response,HttpStatus.OK);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/forgotpassword")
-	public ResponseEntity<String> forgotPassword(@Valid @RequestBody ForgotPasswordDTO forgotPasswordDTO) {
-		return new ResponseEntity<String>(loginService.forgotPassword(forgotPasswordDTO) , HttpStatus.OK);
+	public ResponseEntity<Response> forgotPassword(@Valid @RequestBody ForgotPasswordDTO forgotPasswordDTO) {
+		return new ResponseEntity<Response>(loginService.forgotPassword(forgotPasswordDTO) , HttpStatus.OK);
 	}
 	
 }

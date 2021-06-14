@@ -5,13 +5,14 @@ import com.bridgelabz.userregistrationlogin.dto.ForgotPasswordDTO;
 import com.bridgelabz.userregistrationlogin.dto.LoginDTO;
 import com.bridgelabz.userregistrationlogin.dto.RegisterDTO;
 import com.bridgelabz.userregistrationlogin.model.UserRgisterModel;
+import com.bridgelabz.userregistrationlogin.util.Response;
 
 public interface ILoginService {
 
-	String loginData(LoginDTO login);
+	Response loginData(LoginDTO login);
 
-	UserRgisterModel registerUserData(RegisterDTO registerDTO);
+	Response registerUserData(RegisterDTO registerDTO);
 	
-	String forgotPassword(ForgotPasswordDTO forgotPasswordDTO);
+	Response forgotPassword(ForgotPasswordDTO forgotPasswordDTO);
 
 }
